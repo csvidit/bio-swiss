@@ -20,8 +20,8 @@ const Index = () => {
       <MainContent>
         <div className="flex flex-row space-x-2 p-4 items-center">
           <Image
-            src="/vidit-grad-bw.png"
-            className="grayscale rounded-full"
+            src="/vidit-grad.png"
+            className="rounded-full"
             width={100}
             height={100}
             alt="Vidit Khandelwal Graduation"
