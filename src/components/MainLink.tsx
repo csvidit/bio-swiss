@@ -5,19 +5,66 @@ import { RxArrowTopRight } from "react-icons/rx";
 
 const MainLink = (props: {
   href: string | UrlObject;
+  label: React.ReactNode;
   children: React.ReactNode;
+  key: any;
+  type: React.ReactNode;
+  id: any;
+  setHoveredButtonId: any
 }) => {
+  const variants1 = {
+    initial: {
+      textColor: "#1c1917",
+      transition: { type: "tween", duration: 0.3, ease: "easeInOut" },
+    },
+    hover: {
+      textColor: "#f5f5f4",
+      transition: {
+        type: "tween",
+        duration: 0.3,
+        ease: "easeInOut",
+      },
+    },
+  };
+
+  const variants2 = {
+    initial: {
+      borderColor: "rgba(0, 0, 0, 0)",
+      backgroundColor: "rgba(0, 0, 0, 0)",
+    },
+    hover: { borderColor: "#f5f5f4", backgroundColor: "#1d4ed8" },
+  };
+
   return (
-    <Link href={props.href} className="z-10 group overflow-hidden">
-      <motion.div
-        layout
-        className="relative flex flex-row justify-between p-4 space-x-0 items-center border-b border-b-stone-900 group-hover:text-stone-100 transition-all duration-300 ease-in-out z-10"
-      >
-        <div className="z-10">{props.children}</div>
-        <div className="rounded-full p-2 border-transparent group-hover:border-stone-100 group-hover:bg-blue-700 duration-300 ease-in-out z-10"><RxArrowTopRight/></div>
-        <motion.div layout className="z-0 absolute h-full w-full left-0 opacity-0 bg-stone-900 group-hover:bottom-0 group-hover:opacity-100 group-hover:w-full group-hover:rounded-none transition-all duration-300 ease-in-out"></motion.div>
-      </motion.div>
-    </Link>
+    <motion.div
+      onMouseEnter={() => props.setHoveredButtonId(props.id)}
+      onMouseLeave={() => props.setHoveredButtonId(null)}
+      layoutId={`button-${props.id}`}
+      className="relative z-10 group"
+    >
+      <Link href={props.href} className="z-10 overflow-hidden">
+        <motion.div
+          layout
+          initial="initial"
+          whileHover="hover"
+          variants={variants1}
+          className="flex flex-row justify-between p-4 space-x-0 items-center border-b border-b-stone-900 z-10"
+        >
+          <motion.div className="z-10">
+            <motion.div className="flex flex-col space-y-2">
+              <motion.div className="text-stone-500 text-xs group-hover:text-stone-300 transition-all duration-300 ease-in-out">
+                {props.type}
+              </motion.div>
+              <motion.div className="z-10">{props.label}</motion.div>
+            </motion.div>
+          </motion.div>
+          <motion.div className="rounded-full p-2 z-10" variants={variants2}>
+            <RxArrowTopRight />
+          </motion.div>
+        </motion.div>
+      </Link>
+      {props.children}
+    </motion.div>
   );
 };
 

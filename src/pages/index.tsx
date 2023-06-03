@@ -6,15 +6,54 @@ import { MdOutlineWorkOutline } from "react-icons/md";
 import { TbLocation } from "react-icons/tb";
 import { RxArrowTopRight } from "react-icons/rx";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import {
+  AnimatePresence,
+  AnimateSharedLayout,
+  LayoutGroup,
+  motion,
+} from "framer-motion";
 import ExternalLink from "@/components/ExternalLink";
-import AnimatedCursor from "react-animated-cursor";
 import MainLink from "@/components/MainLink";
-import SpotlightLink from "@/components/SpotlightLink";
 import Spotlight from "@/components/Spotlight";
 import SectionContainer from "@/components/SectionContainer";
+import { useState } from "react";
 
 const Index = () => {
+  const [hoveredButtonId, setHoveredButtonId] = useState(null);
+
+  const mainLinks = [
+    {
+      href: "https://github.com/csvidit/xz-gpt",
+      type: "WEB DEV PROJECT",
+      label: "Xzayvian GPT",
+      id: "1",
+    },
+    {
+      href: "https://github.com/csvidit/snapshot",
+      type: "WEB DEV PROJECT",
+      label: "Snapshot",
+      id: "2",
+    },
+  ];
+
+  const variants3 = {
+    initial: {
+      opacity: 0,
+      transition: {
+        type: "tween",
+        duration: 0.3,
+        ease: "easeInOut",
+      },
+    },
+    hover: {
+      opacity: 100,
+      transition: {
+        type: "tween",
+        duration: 0.3,
+        ease: "easeInOut",
+      },
+    },
+  };
   return (
     <MainContainer>
       <MainContent>
@@ -52,8 +91,8 @@ const Index = () => {
           <ExternalLink href="https://linkedin.com/in/viditkhandelwal">
             LINKEDIN
           </ExternalLink>
-          <ExternalLink href="https://read.cv/viditkhandelwal">
-            RÉSUME
+          <ExternalLink href="https://cs.viditkhandelwal.com">
+            CS PORTFOLIO
           </ExternalLink>
           <ExternalLink href="mailto:viditkhandelwal_2023@depauw.edu">
             EMAIL
@@ -63,23 +102,53 @@ const Index = () => {
           Squawk Social, a fun and unserious social media platform with quirky,
           Gen-Z reactions
         </Spotlight>
-        <MainLink href="https://xz.viditkhandelwal.com">
-          <div className="flex flex-col space-y-2">
-            <div className="text-stone-500 text-xs group-hover:text-stone-300 transition-all duration-300 ease-in-out">
-              WEB DEV PROJECT
+        <LayoutGroup id="button-group">
+          {mainLinks.map((x) => (
+            <MainLink
+              label={x.label}
+              key={x.id}
+              type={x.type}
+              href={x.href}
+              id={x.id}
+              setHoveredButtonId={setHoveredButtonId}
+            >
+              <AnimatePresence>
+                {hoveredButtonId && (
+                  <motion.div
+                    layoutId={`button-${hoveredButtonId}`}
+                    initial={{
+                      opacity: 0,
+                    }}
+                    transition={{
+                      type: "tween",
+                      duration: 0.3,
+                      ease: "easeInOut",
+                    }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="absolute top-0 z-0 h-full w-full bg-stone-900"
+                  />
+                )}
+              </AnimatePresence>
+            </MainLink>
+          ))}
+          {/* <MainLink href="https://xz.viditkhandelwal.com">
+            <div className="flex flex-col space-y-2">
+              <div className="text-stone-500 text-xs group-hover:text-stone-300 transition-all duration-300 ease-in-out">
+                WEB DEV PROJECT
+              </div>
+              <div className="z-10">Xzayvian GPT</div>
             </div>
-            <div className="z-10">Xzayvian GPT</div>
-          </div>
-        </MainLink>
-        <MainLink href="https://github.com/csvidit/snapshot">
-          <div className="flex flex-col space-y-2">
-            <div className="text-stone-500 text-xs group-hover:text-stone-300 transition-all duration-300 ease-in-out">
-              WEB DEV PROJECT
+          </MainLink>
+          <MainLink href="https://github.com/csvidit/snapshot">
+            <div className="flex flex-col space-y-2">
+              <div className="text-stone-500 text-xs group-hover:text-stone-300 transition-all duration-300 ease-in-out">
+                WEB DEV PROJECT
+              </div>
+              <div className="z-10">Snapshot</div>
             </div>
-            <div className="z-10">Snapshot</div>
-          </div>
-        </MainLink>
-        
+          </MainLink> */}
+        </LayoutGroup>
       </MainContent>
     </MainContainer>
   );
