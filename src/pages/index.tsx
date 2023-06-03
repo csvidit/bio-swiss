@@ -104,33 +104,36 @@ const Index = () => {
         </Spotlight>
         <LayoutGroup id="button-group">
           {mainLinks.map((x) => (
-            <MainLink
-              label={x.label}
-              key={x.id}
-              type={x.type}
-              href={x.href}
-              id={x.id}
-              setHoveredButtonId={setHoveredButtonId}
-            >
-              <AnimatePresence>
-                {hoveredButtonId && (
-                  <motion.div
-                    layoutId={`button-${hoveredButtonId}`}
-                    initial={{
-                      opacity: 0,
-                    }}
-                    transition={{
-                      type: "tween",
-                      duration: 0.3,
-                      ease: "easeInOut",
-                    }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="absolute top-0 z-0 h-full w-full bg-stone-900"
-                  />
-                )}
-              </AnimatePresence>
-            </MainLink>
+            <AnimatePresence key={x.id}>
+              <MainLink
+                label={x.label}
+                key={x.id}
+                type={x.type}
+                href={x.href}
+                id={x.id}
+                hoveredButtonId={hoveredButtonId}
+                setHoveredButtonId={setHoveredButtonId}
+              >
+                {/* <AnimatePresence>
+              {hoveredButtonId && (
+                <motion.div
+                  layoutId={`button-${hoveredButtonId}`}
+                  initial={{
+                    opacity: 0,
+                  }}
+                  transition={{
+                    type: "tween",
+                    duration: 0.3,
+                    ease: "easeInOut",
+                  }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="absolute top-0 z-0 h-full w-full bg-stone-900"
+                />
+              )}
+            </AnimatePresence> */}
+              </MainLink>
+            </AnimatePresence>
           ))}
           {/* <MainLink href="https://xz.viditkhandelwal.com">
             <div className="flex flex-col space-y-2">
