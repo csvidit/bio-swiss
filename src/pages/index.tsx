@@ -6,6 +6,11 @@ import { MdOutlineWorkOutline } from "react-icons/md";
 import { TbLocation } from "react-icons/tb";
 import { RxArrowTopRight } from "react-icons/rx";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import ExternalLink from "@/components/ExternalLink";
+import AnimatedCursor from "react-animated-cursor";
+import MainLink from "@/components/MainLink";
+import SpotlightLink from "@/components/SpotlightLink";
 
 const Index = () => {
   return (
@@ -41,25 +46,39 @@ const Index = () => {
           </div>
         </div>
         <div className="flex flex-row space-x-4 p-4 items-center border-t border-t-stone-900">
-          <Link href="https://linkedin.com/in/viditkhandelwal" className="flex flex-row space-x-1 text-xs items-center">
-            <div className="text-stone-600">LINKEDIN</div>
-            <div className="text-sm text-stone-500">
-              <RxArrowTopRight />
-            </div>
-          </Link>
-          <Link href="https://read.cv/viditkhandelwal" className="flex flex-row space-x-1 text-xs items-center">
-            <div className="text-stone-600">RÉSUME</div>
-            <div className="text-sm text-stone-500">
-              <RxArrowTopRight />
-            </div>
-          </Link>
-          <Link href="mailto:viditkhandelwal_2023@depauw.edu" className="flex flex-row space-x-1 text-xs items-center">
-            <div className="text-stone-600">EMAIL</div>
-            <div className="text-sm text-stone-500">
-              <RxArrowTopRight />
-            </div>
-          </Link>
+          <ExternalLink href="https://linkedin.com/in/viditkhandelwal">
+            LINKEDIN
+          </ExternalLink>
+          <ExternalLink href="https://read.cv/viditkhandelwal">
+            RÉSUME
+          </ExternalLink>
+          <ExternalLink href="mailto:viditkhandelwal_2023@depauw.edu">
+            EMAIL
+          </ExternalLink>
         </div>
+        <Link
+          href="https://github.com/csvidit/squawk"
+          className="flex flex-row justify-between space-x-4 items-center p-4 border-t border-t-stone-900 group hover:bg-stone-900 transition-all duration-300 ease-in-out"
+        >
+          <div className="flex flex-col space-y-4">
+            <div className="text-stone-500 text-xs group-hover:text-stone-300 transition-all duration-300 ease-in-out">
+              SPOTLIGHT
+            </div>
+            <div className="group-hover:text-yellow-400 transition-all duration-300 ease-in-out">
+              A fun and unserious social media platform with quirky, Gen-Z
+              reactions
+            </div>
+          </div>
+          <div className="p-2 rounded-full border-stone-900 group-hover:border-stone-100 group-hover:bg-yellow-400 transition-all duration-300 ease-in-out">
+            <RxArrowTopRight />
+          </div>
+        </Link>
+        <MainLink href="https://xz.viditkhandelwal.com">
+          <div className="z-10">Xzayvian GPT</div>
+        </MainLink>
+        <MainLink href="https://drive.google.com/file/d/1Tn6whB4hZ2w13NZiZGQXtPZUwrfkWpyQ/view">
+          <div className="z-10">Singapore&apos;s Economic Miracle</div>
+        </MainLink>
       </MainContent>
     </MainContainer>
   );
