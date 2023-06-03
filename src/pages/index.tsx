@@ -27,7 +27,7 @@ const Index = () => {
             alt="Vidit Khandelwal Graduation"
           ></Image>
           <div className="flex flex-col space-y-1 text-lg lg:text-xl">
-            <Title>VIDIT KHANDELWAL</Title>
+            <Title>Vidit Khandelwal</Title>
             <div className="text-stone-500 text-base">
               Software engineer and recent graduate of DePauw University
             </div>
