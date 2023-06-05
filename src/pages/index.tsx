@@ -17,43 +17,38 @@ import MainLink from "@/components/MainLink";
 import Spotlight from "@/components/Spotlight";
 import SectionContainer from "@/components/SectionContainer";
 import { useState } from "react";
+import { gsap } from "gsap";
 
 const Index = () => {
   const [hoveredButtonId, setHoveredButtonId] = useState(null);
 
   const mainLinks = [
     {
+      href: "https://github.com/csvidit/squawk",
+      type: "SPOTLIGHT",
+      label: `Squawk Social, a fun and unserious social media platform with quirky,
+      Gen-Z reactions`,
+      id: "1",
+    },
+    {
       href: "https://github.com/csvidit/xz-gpt",
       type: "WEB DEV PROJECT",
       label: "Xzayvian GPT",
-      id: "1",
+      id: "2",
     },
     {
       href: "https://github.com/csvidit/snapshot",
       type: "WEB DEV PROJECT",
       label: "Snapshot",
-      id: "2",
+      id: "3",
+    },
+    {
+      href: "https://github.com/csvidit/snapshot",
+      type: "WEB DEV PROJECT",
+      label: "Snapshot",
+      id: "4",
     },
   ];
-
-  const variants3 = {
-    initial: {
-      opacity: 0,
-      transition: {
-        type: "tween",
-        duration: 0.3,
-        ease: "easeInOut",
-      },
-    },
-    hover: {
-      opacity: 100,
-      transition: {
-        type: "tween",
-        duration: 0.3,
-        ease: "easeInOut",
-      },
-    },
-  };
   return (
     <MainContainer>
       <MainContent>
@@ -98,10 +93,6 @@ const Index = () => {
             EMAIL
           </ExternalLink>
         </SectionContainer>
-        <Spotlight href="https://github.com/csvidit">
-          Squawk Social, a fun and unserious social media platform with quirky,
-          Gen-Z reactions
-        </Spotlight>
         <LayoutGroup id="button-group">
           {mainLinks.map((x) => (
             <AnimatePresence key={x.id}>
@@ -110,47 +101,41 @@ const Index = () => {
                 key={x.id}
                 type={x.type}
                 href={x.href}
-                id={x.id}
+                id={`button-${x.id}`}
                 hoveredButtonId={hoveredButtonId}
                 setHoveredButtonId={setHoveredButtonId}
               >
-                {/* <AnimatePresence>
-              {hoveredButtonId && (
-                <motion.div
-                  layoutId={`button-${hoveredButtonId}`}
-                  initial={{
-                    opacity: 0,
-                  }}
-                  transition={{
-                    type: "tween",
-                    duration: 0.3,
-                    ease: "easeInOut",
-                  }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="absolute top-0 z-0 h-full w-full bg-stone-900"
-                />
-              )}
-            </AnimatePresence> */}
+                <AnimatePresence>
+                  {`button-${x.id}` === hoveredButtonId && (
+                    <motion.div
+                      layoutId={"button-hover"}
+                      // initial={{
+                      //   opacity: 0,
+                      // }}
+                      transition={{
+                        type: "tween",
+                        duration: 0.3,
+                        
+                        // damping: 10,
+                        // velocity: 3,
+                        ease: "easeInOut",
+                      }}
+                      // transition={{
+                      //   type: "spring",
+                      //   duration: 0.1,
+                      //   damping: 20,
+                      //   velocity: 5,
+                      //   stiffness: 300,
+                      // }}
+                      // animate={{ opacity: 1 }}
+                      // exit={{ opacity: 0 }}
+                      className="absolute top-0 left-0 z-0 h-full w-full bg-stone-900"
+                    />
+                  )}
+                </AnimatePresence>
               </MainLink>
             </AnimatePresence>
           ))}
-          {/* <MainLink href="https://xz.viditkhandelwal.com">
-            <div className="flex flex-col space-y-2">
-              <div className="text-stone-500 text-xs group-hover:text-stone-300 transition-all duration-300 ease-in-out">
-                WEB DEV PROJECT
-              </div>
-              <div className="z-10">Xzayvian GPT</div>
-            </div>
-          </MainLink>
-          <MainLink href="https://github.com/csvidit/snapshot">
-            <div className="flex flex-col space-y-2">
-              <div className="text-stone-500 text-xs group-hover:text-stone-300 transition-all duration-300 ease-in-out">
-                WEB DEV PROJECT
-              </div>
-              <div className="z-10">Snapshot</div>
-            </div>
-          </MainLink> */}
         </LayoutGroup>
       </MainContent>
     </MainContainer>
