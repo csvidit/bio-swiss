@@ -55,8 +55,8 @@ const Index = () => {
           <ExternalLink href="https://read.cv/viditkhandelwal">
             RÉSUME
           </ExternalLink>
-          <ExternalLink href="mailto:viditkhandelwal_2023@depauw.edu">
-            EMAIL
+          <ExternalLink href="/vidit-khandelwal-vcard.vcf">
+            CONTACT CARD
           </ExternalLink>
         </SectionContainer>
         <Spotlight href="https://github.com/csvidit">
