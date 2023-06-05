@@ -55,7 +55,7 @@ const Index = () => {
           <ExternalLink href="https://read.cv/viditkhandelwal">
             RÉSUME
           </ExternalLink>
-          <ExternalLink href="/vidit-khandelwal-vcard.vcf">
+          <ExternalLink href="/vidit-khandelwal-vcard-2.vcf">
             CONTACT CARD
           </ExternalLink>
         </SectionContainer>
