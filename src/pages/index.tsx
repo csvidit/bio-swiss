@@ -104,11 +104,11 @@ const Index = () => {
                       <motion.div
                         layoutId={"button-hover"}
                         transition={{
-                          type: "cubicBezier",
+                          type: "tween",
                           duration: 0.3,
-                          ease: "easeInOut",
                         }}
-                        className={`absolute top-0 left-0 z-0 h-full w-full ${hoveredButtonId!=null ? "bg-stone-900": "bg-transparent"}`}
+                        // className={`absolute top-0 left-0 z-0 h-full w-full ${hoveredButtonId!=null ? "bg-stone-900": "bg-transparent"}`}
+                        className={`absolute top-0 left-0 z-0 h-full w-full bg-stone-900`}
                       />
                     )}
                   </AnimatePresence>
