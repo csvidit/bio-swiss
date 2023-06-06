@@ -1,4 +1,4 @@
-import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { UrlObject } from "url";
 import { RxArrowTopRight } from "react-icons/rx";
@@ -45,18 +45,12 @@ const MainLink = (props: {
       <Link href={props.href} className="z-10 overflow-hidden w-full h-full">
         <motion.div
           layout
-          // initial="initial"
-          // whileHover="hover"
-          // onFocus={() => props.setHoveredButtonId(props.id)}
+          initial="initial"
+          whileHover="hover"
           onHoverStart={() => props.setHoveredButtonId(props.id)}
           onHoverEnd={() => props.setHoveredButtonId(null)}
-          // onMouseMove={() => props.setHoveredButtonId(props.id)}
-          // onMouseOut={() => props.setHoveredButtonId(null)}
-          // onMouseEnter={() => props.setHoveredButtonId(props.id)}
-          // onMouseLeave={() => props.setHoveredButtonId(null)}
-          // onMouseOver={() => props.setHoveredButtonId(props.id)}
           layoutId={"props.id"}
-          // variants={variants1}
+          variants={variants1}
           className={`main-link z-10 group overflow-hidden bg-transparent relative`}
         >
           <motion.div className="z-10 flex flex-row justify-between space-x-4 items-center p-4 border-b border-b-stone-900 group">
@@ -85,14 +79,8 @@ const MainLink = (props: {
         layout
         initial="initial"
         whileHover="hover"
-        // onFocus={() => props.setHoveredButtonId(props.id)}
-        // onMouseMove={() => props.setHoveredButtonId(props.id)}
-        // onMouseOut={() => props.setHoveredButtonId(null)}
         onHoverStart={() => props.setHoveredButtonId(props.id)}
         onHoverEnd={() => props.setHoveredButtonId(null)}
-        // onMouseEnter={() => props.setHoveredButtonId(props.id)}
-        // onMouseLeave={() => props.setHoveredButtonId(null)}
-        // onMouseOver={() => props.setHoveredButtonId(props.id)}
         layoutId={"props.id"}
         variants={variants1}
         className={`main-link z-10 group overflow-hidden bg-transparent relative`}

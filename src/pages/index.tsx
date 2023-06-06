@@ -103,26 +103,11 @@ const Index = () => {
                     {`button-${x.id}` === hoveredButtonId && (
                       <motion.div
                         layoutId={"button-hover"}
-                        // initial={{
-                        //   opacity: 0,
-                        // }}
                         transition={{
                           type: "cubicBezier",
                           duration: 0.3,
-
-                          // damping: 10,
-                          // velocity: 3,
                           ease: "easeInOut",
                         }}
-                        // transition={{
-                        //   type: "spring",
-                        //   duration: 0.1,
-                        //   damping: 20,
-                        //   velocity: 5,
-                        //   stiffness: 300,
-                        // }}
-                        // animate={{ opacity: 1 }}
-                        // exit={{ opacity: 0 }}
                         className={`absolute top-0 left-0 z-0 h-full w-full ${hoveredButtonId!=null ? "bg-stone-900": "bg-transparent"}`}
                       />
                     )}
