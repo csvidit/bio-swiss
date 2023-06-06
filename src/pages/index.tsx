@@ -17,7 +17,6 @@ import MainLink from "@/components/MainLink";
 import Spotlight from "@/components/Spotlight";
 import SectionContainer from "@/components/SectionContainer";
 import { useState } from "react";
-import { gsap } from "gsap";
 
 const Index = () => {
   const [hoveredButtonId, setHoveredButtonId] = useState(null);
@@ -42,16 +41,10 @@ const Index = () => {
       label: "Snapshot",
       id: "3",
     },
-    {
-      href: "https://github.com/csvidit/snapshot",
-      type: "WEB DEV PROJECT",
-      label: "Snapshot",
-      id: "4",
-    },
   ];
   return (
     <MainContainer>
-      <MainContent>
+      <MainContent setHoveredButtonId={setHoveredButtonId}>
         <div className="flex flex-row space-x-2 p-4 items-center">
           <Image
             src="/vidit-grad-bw.png"
@@ -93,50 +86,52 @@ const Index = () => {
             EMAIL
           </ExternalLink>
         </SectionContainer>
-        <LayoutGroup id="button-group">
-          {mainLinks.map((x) => (
-            <AnimatePresence key={x.id}>
-              <MainLink
-                label={x.label}
-                key={x.id}
-                type={x.type}
-                href={x.href}
-                id={`button-${x.id}`}
-                hoveredButtonId={hoveredButtonId}
-                setHoveredButtonId={setHoveredButtonId}
-              >
-                <AnimatePresence>
-                  {`button-${x.id}` === hoveredButtonId && (
-                    <motion.div
-                      layoutId={"button-hover"}
-                      // initial={{
-                      //   opacity: 0,
-                      // }}
-                      transition={{
-                        type: "tween",
-                        duration: 0.3,
-                        
-                        // damping: 10,
-                        // velocity: 3,
-                        ease: "easeInOut",
-                      }}
-                      // transition={{
-                      //   type: "spring",
-                      //   duration: 0.1,
-                      //   damping: 20,
-                      //   velocity: 5,
-                      //   stiffness: 300,
-                      // }}
-                      // animate={{ opacity: 1 }}
-                      // exit={{ opacity: 0 }}
-                      className="absolute top-0 left-0 z-0 h-full w-full bg-stone-900"
-                    />
-                  )}
-                </AnimatePresence>
-              </MainLink>
-            </AnimatePresence>
-          ))}
-        </LayoutGroup>
+        <motion.div className="w-full h-max" onChange={() => setHoveredButtonId(null)}>
+          <LayoutGroup id="button-group">
+            {mainLinks.map((x) => (
+              <AnimatePresence key={x.id}>
+                <MainLink
+                  label={x.label}
+                  key={x.id}
+                  type={x.type}
+                  href={x.href}
+                  id={`button-${x.id}`}
+                  hoveredButtonId={hoveredButtonId}
+                  setHoveredButtonId={setHoveredButtonId}
+                >
+                  <AnimatePresence mode="popLayout">
+                    {`button-${x.id}` === hoveredButtonId && (
+                      <motion.div
+                        layoutId={"button-hover"}
+                        // initial={{
+                        //   opacity: 0,
+                        // }}
+                        transition={{
+                          type: "cubicBezier",
+                          duration: 0.3,
+
+                          // damping: 10,
+                          // velocity: 3,
+                          ease: "easeInOut",
+                        }}
+                        // transition={{
+                        //   type: "spring",
+                        //   duration: 0.1,
+                        //   damping: 20,
+                        //   velocity: 5,
+                        //   stiffness: 300,
+                        // }}
+                        // animate={{ opacity: 1 }}
+                        // exit={{ opacity: 0 }}
+                        className={`absolute top-0 left-0 z-0 h-full w-full ${hoveredButtonId!=null ? "bg-stone-900": "bg-transparent"}`}
+                      />
+                    )}
+                  </AnimatePresence>
+                </MainLink>
+              </AnimatePresence>
+            ))}
+          </LayoutGroup>
+        </motion.div>
       </MainContent>
     </MainContainer>
   );

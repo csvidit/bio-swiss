@@ -38,22 +38,28 @@ const MainLink = (props: {
     hover: { borderColor: "#f5f5f4", backgroundColor: "#1d4ed8" },
   };
 
+  console.log("RE-RENDER");
+
   if (props.type == "SPOTLIGHT") {
     return (
-      <motion.div
-        layout
-        initial="initial"
-        whileHover="hover"
-        onHoverStart={() => props.setHoveredButtonId(props.id)}
-        onHoverEnd={() => props.setHoveredButtonId(null)}
-        // onMouseEnter={() => props.setHoveredButtonId(props.id)}
-        // onMouseLeave={() => props.setHoveredButtonId(null)}
-        layoutId={"props.id"}
-        variants={variants1}
-        className={`main-link z-10 group overflow-hidden bg-transparent relative`}
-      >
-        <Link href={props.href} className="z-10 overflow-hidden w-full h-full">
-          <motion.div className="z-10 flex flex-row justify-between space-x-4 items-center p-4 border-b border-b-stone-900 group hover:bg-stone-900 transition-all duration-300 ease-in-out">
+      <Link href={props.href} className="z-10 overflow-hidden w-full h-full">
+        <motion.div
+          layout
+          // initial="initial"
+          // whileHover="hover"
+          // onFocus={() => props.setHoveredButtonId(props.id)}
+          onHoverStart={() => props.setHoveredButtonId(props.id)}
+          onHoverEnd={() => props.setHoveredButtonId(null)}
+          // onMouseMove={() => props.setHoveredButtonId(props.id)}
+          // onMouseOut={() => props.setHoveredButtonId(null)}
+          // onMouseEnter={() => props.setHoveredButtonId(props.id)}
+          // onMouseLeave={() => props.setHoveredButtonId(null)}
+          // onMouseOver={() => props.setHoveredButtonId(props.id)}
+          layoutId={"props.id"}
+          // variants={variants1}
+          className={`main-link z-10 group overflow-hidden bg-transparent relative`}
+        >
+          <motion.div className="z-10 flex flex-row justify-between space-x-4 items-center p-4 border-b border-b-stone-900 group">
             <div className="z-10 flex flex-col space-y-4">
               <div className="z-10 text-stone-500 text-xs group-hover:text-stone-300 transition-all duration-300 ease-in-out">
                 SPOTLIGHT
@@ -66,26 +72,31 @@ const MainLink = (props: {
               <RxArrowTopRight />
             </div>
           </motion.div>
-        </Link>
-        {props.children}
-      </motion.div>
+
+          {props.children}
+        </motion.div>
+      </Link>
     );
   }
 
   return (
-    <motion.div
-      layout
-      initial="initial"
-      whileHover="hover"
-      onHoverStart={() => props.setHoveredButtonId(props.id)}
-      onHoverEnd={() => props.setHoveredButtonId(null)}
-      // onMouseEnter={() => props.setHoveredButtonId(props.id)}
-      // onMouseLeave={() => props.setHoveredButtonId(null)}
-      layoutId={"props.id"}
-      variants={variants1}
-      className={`main-link z-10 group overflow-hidden bg-transparent relative`}
-    >
-      <Link href={props.href} className="z-10 overflow-hidden w-full h-full">
+    <Link href={props.href} className="z-10 overflow-hidden w-full h-full">
+      <motion.div
+        layout
+        initial="initial"
+        whileHover="hover"
+        // onFocus={() => props.setHoveredButtonId(props.id)}
+        // onMouseMove={() => props.setHoveredButtonId(props.id)}
+        // onMouseOut={() => props.setHoveredButtonId(null)}
+        onHoverStart={() => props.setHoveredButtonId(props.id)}
+        onHoverEnd={() => props.setHoveredButtonId(null)}
+        // onMouseEnter={() => props.setHoveredButtonId(props.id)}
+        // onMouseLeave={() => props.setHoveredButtonId(null)}
+        // onMouseOver={() => props.setHoveredButtonId(props.id)}
+        layoutId={"props.id"}
+        variants={variants1}
+        className={`main-link z-10 group overflow-hidden bg-transparent relative`}
+      >
         <motion.div
           layout
           className="flex flex-row justify-between p-4 space-x-0 items-center border-b border-b-stone-900 z-10"
@@ -109,9 +120,10 @@ const MainLink = (props: {
             <RxArrowTopRight />
           </motion.div>
         </motion.div>
-      </Link>
-      {props.children}
-    </motion.div>
+
+        {props.children}
+      </motion.div>
+    </Link>
   );
 };
 
