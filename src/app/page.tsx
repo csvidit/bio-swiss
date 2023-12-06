@@ -1,24 +1,20 @@
-import MainContainer from "@/components/MainContainer";
-import MainContent from "@/components/MainContent";
-import Title from "@/components/Title";
+"use client"
+
+import MainContainer from "@/components/Containers/MainContainer";
+import MainContent from "@/components/Containers/MainContent";
 import Image from "next/image";
 import { MdOutlineWorkOutline } from "react-icons/md";
 import { TbLocation } from "react-icons/tb";
-import { RxArrowTopRight } from "react-icons/rx";
-import Link from "next/link";
 import {
-  AnimatePresence,
-  AnimateSharedLayout,
-  LayoutGroup,
-  motion,
+  AnimatePresence, LayoutGroup,
+  motion
 } from "framer-motion";
-import ExternalLink from "@/components/ExternalLink";
-import MainLink from "@/components/MainLink";
-import Spotlight from "@/components/Spotlight";
-import SectionContainer from "@/components/SectionContainer";
+import ExternalLink from "@/components/Links/ExternalLink";
+import MainLink from "@/components/Links/MainLink";
+import SectionContainer from "@/components/Containers/SectionContainer";
 import { useState } from "react";
 
-const Index = () => {
+const IndexRoute = () => {
   const [hoveredButtonId, setHoveredButtonId] = useState(null);
 
   const mainLinks = [
@@ -54,7 +50,7 @@ const Index = () => {
             alt="Vidit Khandelwal Graduation"
           ></Image>
           <div className="flex flex-col space-y-1 text-lg lg:text-xl">
-            <Title>Vidit Khandelwal</Title>
+            <h1>Vidit Khandelwal</h1>
             <div className="text-stone-500 text-base">
               Software engineer and recent graduate of DePauw University
             </div>
@@ -107,7 +103,6 @@ const Index = () => {
                           type: "tween",
                           duration: 0.3,
                         }}
-                        // className={`absolute top-0 left-0 z-0 h-full w-full ${hoveredButtonId!=null ? "bg-stone-900": "bg-transparent"}`}
                         className={`absolute top-0 left-0 z-0 h-full w-full bg-stone-900`}
                       />
                     )}
@@ -122,4 +117,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default IndexRoute;

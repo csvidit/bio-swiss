@@ -1,12 +1,11 @@
 BEGIN:VCARD
 VERSION:3.0
-FN;CHARSET=UTF-8:
-N:Khandelwal;Vidit;;
-TEL;TYPE=CELL:+1 (765) 301-1174
-EMAIL:viditkhandelwal_2023@depauw.edu
-ORG:
-URL:cs.viditkhandelwal.com
-ADR;TYPE=WORK:;;;;;;United States
-TITLE:
-REV:Mon Jun 05 2023 16:53:07 GMT-0400 (Eastern Daylight Time)
+FN;CHARSET=UTF-8:Vidit Khandelwal
+N;CHARSET=UTF-8:Khandelwal;Vidit;;;
+EMAIL;CHARSET=UTF-8;type=HOME,INTERNET:viditk17@gmail.com
+TITLE;CHARSET=UTF-8:Software Engineer
+X-SOCIALPROFILE;TYPE=twitter:https://twitter.com/csvidit
+X-SOCIALPROFILE;TYPE=linkedin:https://linkedin.com/in/viditkhandelwal
+X-SOCIALPROFILE;TYPE=Portfolio:https://viditkhandelwal.com
+REV:2023-12-06T16:09:15.866Z
 END:VCARD

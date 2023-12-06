@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1{
+  @apply text-2xl lg:text-4xl
+}
+
+html{
+  scroll-behavior: smooth !important;
+}
