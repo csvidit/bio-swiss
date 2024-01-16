@@ -23,19 +23,16 @@ const IndexRoute = () => {
       type: "SPOTLIGHT",
       label: `Squawk Social, a fun and unserious social media platform with quirky,
       Gen-Z reactions`,
-      id: "1",
     },
     {
       href: "https://github.com/csvidit/xz-gpt",
       type: "WEB DEV PROJECT",
       label: "Xzayvian GPT",
-      id: "2",
     },
     {
       href: "https://github.com/csvidit/snapshot",
       type: "WEB DEV PROJECT",
       label: "Snapshot",
-      id: "3",
     },
   ];
   return (
@@ -84,29 +81,17 @@ const IndexRoute = () => {
         </SectionContainer>
         <motion.div className="w-full h-max" onChange={() => setHoveredButtonId(null)}>
           <LayoutGroup id="button-group">
-            {mainLinks.map((x) => (
-              <AnimatePresence key={x.id}>
+            {mainLinks.map((x, index) => (
+              <AnimatePresence key={index}>
                 <MainLink
-                  label={x.label}
-                  key={x.id}
+                  key={index}
                   type={x.type}
                   href={x.href}
-                  id={`button-${x.id}`}
+                  id={index}
                   hoveredButtonId={hoveredButtonId}
                   setHoveredButtonId={setHoveredButtonId}
                 >
-                  <AnimatePresence mode="popLayout">
-                    {`button-${x.id}` === hoveredButtonId && (
-                      <motion.div
-                        layoutId={"button-hover"}
-                        transition={{
-                          type: "tween",
-                          duration: 0.3,
-                        }}
-                        className={`absolute top-0 left-0 z-0 h-full w-full bg-stone-900`}
-                      />
-                    )}
-                  </AnimatePresence>
+                  {x.label}
                 </MainLink>
               </AnimatePresence>
             ))}
